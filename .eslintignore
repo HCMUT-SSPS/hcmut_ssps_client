@@ -1,3 +1,4 @@
 vite.config.ts
 .prettierc.cjs
 .eslintrc.cjs
+*.config.cjs

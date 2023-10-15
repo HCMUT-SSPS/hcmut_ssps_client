@@ -44,6 +44,7 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': 'warn',
+    'import/no-unresolved': ['error', { caseSensitive: false, ignore: ['^/', '.svg'] }],
     'import/order': [
       'error',
       {
@@ -77,8 +78,13 @@ module.exports = {
             group: 'object',
             position: 'after',
           },
+          {
+            pattern: '/**',
+            group: 'parent',
+            position: 'after',
+          },
         ],
-        pathGroupsExcludedImportTypes: ['@(react|react-native)'],
+        pathGroupsExcludedImportTypes: ['@(react|react-native)', '*.{css,scss,sass,less,styl}'],
       },
     ],
     'jsx-a11y/label-has-associated-control': [
