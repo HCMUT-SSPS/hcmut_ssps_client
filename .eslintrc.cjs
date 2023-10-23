@@ -10,6 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -27,7 +28,6 @@ module.exports = {
     'jsx-a11y',
     'react-hooks',
     'unused-imports',
-    'prettier',
   ],
   rules: {
     '@typescript-eslint/comma-dangle': 0,
