@@ -31,6 +31,10 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/comma-dangle': 0,
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
+    ],
     'import/no-anonymous-default-export': [
       'error',
       {
@@ -97,6 +101,7 @@ module.exports = {
     'no-empty': 'warn',
     'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
+    'no-unused-vars': 'off',
     'no-use-before-define': 'off',
     'prettier/prettier': ['warn'],
     'react-hooks/exhaustive-deps': 'error',
