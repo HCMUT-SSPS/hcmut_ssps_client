@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 
-const DashboardPage = lazy(() => import('../../pages/Home'));
+const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
 
 const AdminRoutes: FC = () => {
   return (
