@@ -31,7 +31,7 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
   return (
     <Sidebar
       backgroundColor='#FFFFFF'
-      className='h-screen px-4 py-12'
+      className='h-screen bg-white px-4 py-12'
       rootStyles={{
         [`.${sidebarClasses.container}`]: {
           display: 'flex',
