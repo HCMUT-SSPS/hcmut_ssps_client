@@ -7,9 +7,12 @@ import Gear from '../../assets/svgs/icons/Gear.svg?react';
 import GearFill from '../../assets/svgs/icons/GearFill.svg?react';
 import House from '../../assets/svgs/icons/House.svg?react';
 import HouseFill from '../../assets/svgs/icons/HouseFill.svg?react';
+import Leaf from '../../assets/svgs/icons/Leaf.svg?react';
+import Lightbulb from '../../assets/svgs/icons/Lightbulb.svg?react';
 import Printer from '../../assets/svgs/icons/Printer.svg?react';
 import PrinterFill from '../../assets/svgs/icons/PrinterFill.svg?react';
 import SignOut from '../../assets/svgs/icons/SignOut.svg?react';
+import Thermometer from '../../assets/svgs/icons/Thermometer.svg?react';
 import User from '../../assets/svgs/icons/User.svg?react';
 import UserFill from '../../assets/svgs/icons/UserFill.svg?react';
 import Logo from '../../assets/svgs/Logo.svg?react';
@@ -24,10 +27,13 @@ export default {
   GearFill,
   House,
   HouseFill,
+  Leaf,
+  Lightbulb,
   Logo,
   Printer,
   PrinterFill,
   SignOut,
+  Thermometer,
   User,
   UserFill,
 };

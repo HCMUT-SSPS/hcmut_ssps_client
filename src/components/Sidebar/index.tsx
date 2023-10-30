@@ -32,6 +32,12 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
     <Sidebar
       backgroundColor='#FFFFFF'
       className='h-screen bg-white px-4 py-12'
+      style={{
+        position: 'sticky',
+        top: '0px',
+        maxHeight: '100dvh',
+        zIndex: 1000,
+      }}
       rootStyles={{
         [`.${sidebarClasses.container}`]: {
           display: 'flex',

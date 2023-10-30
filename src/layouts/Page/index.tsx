@@ -18,7 +18,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(
     }, [title, description]);
 
     return (
-      <div className='h-screen w-screen' {...props}>
+      <div className='w-full' {...props}>
         {children}
       </div>
     );
