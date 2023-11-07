@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 
 import Chart from '../../../assets/svgs/Chart.svg?react';
 import PerformanceChart from '../../../assets/svgs/PerformanceChart.svg?react';
@@ -32,7 +34,7 @@ const Dashboard: FC = () => {
           </div>
         </div>
 
-        <main className='flex w-full flex-1 flex-row gap-x-6 p-10'>
+        <main className='flex w-full flex-1 flex-row flex-wrap gap-x-6 p-10'>
           <section className='flex flex-1 flex-col justify-between gap-y-4'>
             <div
               className='flex w-full flex-col items-center justify-center gap-y-5 
@@ -138,15 +140,67 @@ const Dashboard: FC = () => {
                 Pages Printed (This month)
               </h1>
 
-              <Chart />
+              <Chart className='aspect-auto h-auto w-full object-cover' />
             </div>
 
             <div className='flex flex-1 flex-col gap-y-4'>
-              <h1 className='text-xl/tight font-semibold text-green-900 2xl:text-2xl/tight'>
-                Pages Printed (This month)
-              </h1>
+              <div className='flex flex-row items-center justify-between'>
+                <h1 className='text-xl/tight font-semibold text-green-900 2xl:text-2xl/tight'>
+                  Printers Status
+                </h1>
+                <Link to='/admin/printers' className='text-sm/tight 2xl:text-base/tight'>
+                  See details
+                </Link>
+              </div>
 
-              <Chart />
+              <Table>
+                <Thead className='text-xs/tight 2xl:text-sm/tight'>
+                  <Tr>
+                    <Th className='uppercase'>Printer ID</Th>
+                    <Th className='uppercase'>Location</Th>
+                    <Th className='uppercase'>Latest uptime</Th>
+                    <Th className='uppercase'>Printed Today</Th>
+                    <Th className='uppercase'>Status</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  <Tr>
+                    <Td>bk_server_1_a4_1a</Td>
+                    <Td>Room A605, Building A4</Td>
+                    <Td>32d40m</Td>
+                    <Td>20 pages</Td>
+                    <Td className='font-semibold text-[#88C56C]'>Online</Td>
+                  </Tr>
+                  <Tr>
+                    <Td>bk_server_1_a4_1b</Td>
+                    <Td>Room A605, Building A4</Td>
+                    <Td>32d40m</Td>
+                    <Td>12 pages</Td>
+                    <Td className='font-semibold text-[#88C56C]'>Online</Td>
+                  </Tr>
+                  <Tr>
+                    <Td className='text-[#F63B3B]'>bk_server_2_c5_1c</Td>
+                    <Td className='text-[#F63B3B]'>Room C213, Building C5</Td>
+                    <Td className='text-[#F63B3B]'>2d40m</Td>
+                    <Td>N/A</Td>
+                    <Td className='font-semibold text-[#F63B3B]'>Offline</Td>
+                  </Tr>
+                  <Tr>
+                    <Td>bk_server_3_b5_1d</Td>
+                    <Td>Room B212, Building B5</Td>
+                    <Td>100d23m</Td>
+                    <Td>100 pages</Td>
+                    <Td className='font-semibold text-[#88C56C]'>Online</Td>
+                  </Tr>
+                  <Tr>
+                    <Td className='text-[#F63B3B]'>bk_server_4_c6_1a</Td>
+                    <Td className='text-[#F63B3B]'>Room C601, Building C6</Td>
+                    <Td className='text-[#F63B3B]'>2d40m</Td>
+                    <Td>N/A</Td>
+                    <Td className='font-semibold text-[#F63B3B]'>Offline</Td>
+                  </Tr>
+                </Tbody>
+              </Table>
             </div>
           </section>
         </main>
