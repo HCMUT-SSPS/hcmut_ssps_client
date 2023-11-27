@@ -1,8 +1,12 @@
 import { FC, SVGProps, useMemo } from 'react';
 import { Sidebar, Menu, MenuItem, sidebarClasses } from 'react-pro-sidebar';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { Icon as IconComponent } from '..';
+import Logo from '../../assets/svgs/Logo.svg?react';
+import { useStorage } from '../../hooks';
+
+import { User } from '../../typings';
 
 export interface SidebarProps {
   items: {
@@ -22,11 +26,15 @@ export interface SidebarProps {
 }
 
 const CustomSidebar: FC<SidebarProps> = ({ items }) => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [user, setUser] = useStorage<User | undefined>('user', undefined);
 
   const isActive = useMemo(() => {
     return items.map((item) => pathname.includes(item.path));
   }, [pathname, items]);
+
+  if (!user) return null;
 
   return (
     <Sidebar
@@ -49,7 +57,7 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
     >
       <div>
         <div className='flex flex-row items-center justify-center gap-x-2'>
-          <IconComponent.Logo className='text-green-900' />
+          <Logo className='text-green-900' />
           <p className='pointer-events-none select-none text-xl/normal font-bold text-green-900'>
             <i>Print</i>Pulse
           </p>
@@ -116,13 +124,23 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
       </div>
       <div className='flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center gap-x-2'>
-          <img alt="user's profile picture" className='aspect-square w-16' />
+          <img
+            src={user.avatar}
+            alt="user's profile picture"
+            className='aspect-square w-16 rounded-lg'
+          />
           <div className='space-y-1'>
-            <p className='text-base/normal font-medium text-gray-700'>Le Ba Tan</p>
-            <p className='text-sm/normal font-normal'>Admin</p>
+            <p className='text-base/normal font-medium text-gray-700'>{user.name}</p>
+            <p className='text-sm/normal font-normal'>{user.isManager ? 'Admin' : 'Student'}</p>
           </div>
         </div>
-        <button className='flex flex-row items-center gap-x-2'>
+        <button
+          className='flex flex-row items-center gap-x-2'
+          onClick={() => {
+            setUser(undefined);
+            navigate('/');
+          }}
+        >
           <IconComponent.SignOut className='w-6 text-gray-900' />
         </button>
       </div>

@@ -1,9 +1,7 @@
-import { FC, Suspense, lazy } from 'react';
+import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
-
-const HomePage = lazy(() => import('../../pages/Home'));
 
 const UserRoutes: FC = () => {
   return (
@@ -13,44 +11,37 @@ const UserRoutes: FC = () => {
           {
             name: 'Dashboard',
             path: '/dashboard',
-            Icon: Icon.House,
-            IconFill: Icon.HouseFill,
+            Icon: Icon.House.Outlined,
+            IconFill: Icon.House.Filled,
           },
           {
             name: 'Printing Services',
             path: '/printing',
-            Icon: Icon.Printer,
-            IconFill: Icon.PrinterFill,
+            Icon: Icon.Printer.Outlined,
+            IconFill: Icon.Printer.Filled,
           },
           {
             name: 'Activity Logs',
             path: '/logs',
-            Icon: Icon.FileSearch,
-            IconFill: Icon.FileSearchFill,
+            Icon: Icon.FileSearch.Outlined,
+            IconFill: Icon.FileSearch.Filled,
           },
           {
             name: 'Notifications',
             path: '/notifications',
-            Icon: Icon.Bell,
-            IconFill: Icon.BellFill,
+            Icon: Icon.Bell.Outlined,
+            IconFill: Icon.Bell.Filled,
           },
           {
             name: 'Settings',
             path: '/settings',
-            Icon: Icon.Gear,
-            IconFill: Icon.GearFill,
+            Icon: Icon.Gear.Outlined,
+            IconFill: Icon.Gear.Filled,
           },
         ]}
       />
       <Routes>
-        <Route
-          path='/'
-          element={
-            <Suspense fallback={null}>
-              <HomePage />
-            </Suspense>
-          }
-        />
+        <Route path='*' element={<div>Not found</div>} />
       </Routes>
     </>
   );

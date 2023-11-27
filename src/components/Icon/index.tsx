@@ -1,6 +1,10 @@
 import Bell from '../../assets/svgs/icons/Bell.svg?react';
 import BellFill from '../../assets/svgs/icons/BellFill.svg?react';
 import ChartLine from '../../assets/svgs/icons/ChartLine.svg?react';
+import Check from '../../assets/svgs/icons/Check.svg?react';
+import CheckFill from '../../assets/svgs/icons/CheckFill.svg?react';
+import Eye from '../../assets/svgs/icons/Eye.svg?react';
+import EyeClosed from '../../assets/svgs/icons/EyeClosed.svg?react';
 import FileSearch from '../../assets/svgs/icons/FileSearch.svg?react';
 import FileSearchFill from '../../assets/svgs/icons/FileSearchFill.svg?react';
 import Gear from '../../assets/svgs/icons/Gear.svg?react';
@@ -15,25 +19,43 @@ import SignOut from '../../assets/svgs/icons/SignOut.svg?react';
 import Thermometer from '../../assets/svgs/icons/Thermometer.svg?react';
 import User from '../../assets/svgs/icons/User.svg?react';
 import UserFill from '../../assets/svgs/icons/UserFill.svg?react';
-import Logo from '../../assets/svgs/Logo.svg?react';
 
 export default {
-  Bell,
-  BellFill,
+  Bell: {
+    Outlined: Bell,
+    Filled: BellFill,
+  },
   ChartLine,
-  FileSearch,
-  FileSearchFill,
-  Gear,
-  GearFill,
-  House,
-  HouseFill,
+  Check: {
+    Outlined: Check,
+    Filled: CheckFill,
+  },
+  Eye: {
+    Opened: Eye,
+    Closed: EyeClosed,
+  },
+  FileSearch: {
+    Outlined: FileSearch,
+    Filled: FileSearchFill,
+  },
+  Gear: {
+    Outlined: Gear,
+    Filled: GearFill,
+  },
+  House: {
+    Outlined: House,
+    Filled: HouseFill,
+  },
   Leaf,
   Lightbulb,
-  Logo,
-  Printer,
-  PrinterFill,
+  Printer: {
+    Outlined: Printer,
+    Filled: PrinterFill,
+  },
   SignOut,
   Thermometer,
-  User,
-  UserFill,
+  User: {
+    Outlined: User,
+    Filled: UserFill,
+  },
 };
