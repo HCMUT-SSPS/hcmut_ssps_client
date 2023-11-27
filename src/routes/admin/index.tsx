@@ -13,26 +13,26 @@ const AdminRoutes: FC = () => {
           {
             name: 'Dashboard',
             path: '/admin/dashboard',
-            Icon: Icon.House,
-            IconFill: Icon.HouseFill,
+            Icon: Icon.House.Outlined,
+            IconFill: Icon.House.Filled,
           },
           {
             name: 'Printers',
             path: '/admin/printers',
-            Icon: Icon.Printer,
-            IconFill: Icon.PrinterFill,
+            Icon: Icon.Printer.Outlined,
+            IconFill: Icon.Printer.Filled,
           },
           {
             name: 'Activity Logs',
             path: '/admin/logs',
-            Icon: Icon.FileSearch,
-            IconFill: Icon.FileSearchFill,
+            Icon: Icon.FileSearch.Outlined,
+            IconFill: Icon.FileSearch.Filled,
           },
           {
             name: 'Users',
             path: '/admin/users',
-            Icon: Icon.User,
-            IconFill: Icon.UserFill,
+            Icon: Icon.User.Outlined,
+            IconFill: Icon.User.Filled,
           },
           {
             name: 'Reports',
@@ -42,14 +42,14 @@ const AdminRoutes: FC = () => {
           {
             name: 'Notifications',
             path: '/admin/notifications',
-            Icon: Icon.Bell,
-            IconFill: Icon.BellFill,
+            Icon: Icon.Bell.Outlined,
+            IconFill: Icon.Bell.Filled,
           },
           {
             name: 'Settings',
             path: '/admin/settings',
-            Icon: Icon.Gear,
-            IconFill: Icon.GearFill,
+            Icon: Icon.Gear.Outlined,
+            IconFill: Icon.Gear.Filled,
           },
         ]}
       />
