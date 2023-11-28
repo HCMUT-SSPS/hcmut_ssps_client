@@ -1,14 +1,42 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
-import { AdminRoutes, UserRoutes } from './routes';
+import { useStorage } from './hooks';
+import { AdminRoutes, AuthRoutes, UserRoutes } from './routes';
+
+import { User } from './typings';
+
+const HomePage = lazy(() => import('./pages/Home'));
 
 const App = () => {
+  const [user] = useStorage<User | undefined>('user', undefined);
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='*' element={<UserRoutes />} />
-          <Route path='/admin/*' element={<AdminRoutes />} />
+          <Route
+            path='/'
+            element={
+              <Suspense fallback={null}>
+                <HomePage />
+              </Suspense>
+            }
+          />
+          <Route
+            element={
+              user ? (
+                <Navigate to={user.isManager ? '/admin/dashboard' : '/dashboard'} replace />
+              ) : (
+                <Outlet />
+              )
+            }
+          >
+            <Route path='/login/*' element={<AuthRoutes />} />
+          </Route>
+          {user && !user.isManager ? <Route path='*' element={<UserRoutes />} /> : null}
+          {user && user.isManager ? <Route path='/admin/*' element={<AdminRoutes />} /> : null}
+          <Route path='*' element={<div>Not found</div>} />
         </Routes>
       </BrowserRouter>
     </>
