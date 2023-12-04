@@ -6,6 +6,7 @@ import Check from '../../assets/svgs/icons/Check.svg?react';
 import CheckFill from '../../assets/svgs/icons/CheckFill.svg?react';
 import ChevronRight from '../../assets/svgs/icons/ChevronRight.svg?react';
 import CircleHalf from '../../assets/svgs/icons/CircleHalf.svg?react';
+import Close from '../../assets/svgs/icons/Close.svg?react';
 import Eye from '../../assets/svgs/icons/Eye.svg?react';
 import EyeClosed from '../../assets/svgs/icons/EyeClosed.svg?react';
 import File from '../../assets/svgs/icons/File.svg?react';
@@ -30,6 +31,8 @@ import Thermometer from '../../assets/svgs/icons/Thermometer.svg?react';
 import User from '../../assets/svgs/icons/User.svg?react';
 import UserFill from '../../assets/svgs/icons/UserFill.svg?react';
 import Wallet from '../../assets/svgs/icons/Wallet.svg?react';
+import ZoomInIcon from '../../assets/svgs/icons/ZoomInIcon.svg?react';
+import ZoomOutIcon from '../../assets/svgs/icons/ZoomOutIcon.svg?react';
 import Logo from '../../assets/svgs/Logo.svg?react';
 
 export default {
@@ -45,6 +48,7 @@ export default {
   },
   ChevronRight,
   CircleHalf,
+  Close,
   Eye: {
     Opened: Eye,
     Closed: EyeClosed,
@@ -78,6 +82,8 @@ export default {
   SignOut,
   Thermometer,
   Wallet,
+  ZoomInIcon,
+  ZoomOutIcon,
   User: {
     Outlined: User,
     Filled: UserFill,

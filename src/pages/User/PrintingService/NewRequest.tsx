@@ -1,13 +1,21 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 
 import ForestBackground from '../../../assets/images/ForestBackground.png';
 import TreeBackground from '../../../assets/images/TreeBackground.png';
 import { Icon } from '../../../components';
+import BrowseFile from '../../../components/Modal/BrowseFile';
 
 const NewRequest: FC = () => {
+  const [show, setShow] = useState(false);
+
+  const closeModal = () => {
+    setShow(false);
+  };
+
   return (
     <div className='flex space-x-4 px-10 py-10'>
+      <BrowseFile show={show} onClose={closeModal} />
       <section className='flex w-full flex-col xl:w-[78%]'>
         <div className='flex flex-col'>
           <h1 className='text-2xl font-semibold text-green-900'>Printing Service</h1>
@@ -16,7 +24,10 @@ const NewRequest: FC = () => {
             unauthenticated users without the need to install print drivers. To upload a document
             for printing, click Submit a Request.
           </p>
-          <button className='mt-6 flex w-fit items-center space-x-2 rounded-lg bg-green-900 px-10 py-4'>
+          <button
+            onClick={() => setShow(true)}
+            className='mt-6 flex w-fit items-center space-x-2 rounded-lg bg-green-900 px-10 py-4'
+          >
             <p className='font-semibold text-white'>Submit a Request</p>
             <Icon.ArrowRight />
           </button>
