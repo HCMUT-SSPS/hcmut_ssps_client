@@ -8,12 +8,14 @@ import ChevronRight from '../../assets/svgs/icons/ChevronRight.svg?react';
 import CircleHalf from '../../assets/svgs/icons/CircleHalf.svg?react';
 import Eye from '../../assets/svgs/icons/Eye.svg?react';
 import EyeClosed from '../../assets/svgs/icons/EyeClosed.svg?react';
+import File from '../../assets/svgs/icons/File.svg?react';
 import FilePlus from '../../assets/svgs/icons/FilePlus.svg?react';
 import FileSearch from '../../assets/svgs/icons/FileSearch.svg?react';
 import FileSearchFill from '../../assets/svgs/icons/FileSearchFill.svg?react';
 import Gear from '../../assets/svgs/icons/Gear.svg?react';
 import GearFill from '../../assets/svgs/icons/GearFill.svg?react';
 import HourglassHigh from '../../assets/svgs/icons/HourglassHigh.svg?react';
+import HourglassMedium from '../../assets/svgs/icons/HourglassMedium.svg?react';
 import House from '../../assets/svgs/icons/House.svg?react';
 import HouseFill from '../../assets/svgs/icons/HouseFill.svg?react';
 import Leaf from '../../assets/svgs/icons/Leaf.svg?react';
@@ -26,6 +28,7 @@ import SignOut from '../../assets/svgs/icons/SignOut.svg?react';
 import Thermometer from '../../assets/svgs/icons/Thermometer.svg?react';
 import User from '../../assets/svgs/icons/User.svg?react';
 import UserFill from '../../assets/svgs/icons/UserFill.svg?react';
+import Wallet from '../../assets/svgs/icons/Wallet.svg?react';
 import Logo from '../../assets/svgs/Logo.svg?react';
 
 export default {
@@ -45,6 +48,7 @@ export default {
     Opened: Eye,
     Closed: EyeClosed,
   },
+  File,
   FilePlus,
   FileSearch: {
     Outlined: FileSearch,
@@ -55,6 +59,7 @@ export default {
     Filled: GearFill,
   },
   HourglassHigh,
+  HourglassMedium,
   House: {
     Outlined: House,
     Filled: HouseFill,
@@ -70,6 +75,7 @@ export default {
   },
   SignOut,
   Thermometer,
+  Wallet,
   User: {
     Outlined: User,
     Filled: UserFill,

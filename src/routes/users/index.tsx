@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
+import UserDashboard from '../../pages/User/Dashboard';
 
 const UserRoutes: FC = () => {
   return (
@@ -42,6 +43,7 @@ const UserRoutes: FC = () => {
       />
       <Routes>
         <Route path='*' element={<div>Not found</div>} />
+        <Route path='/dashboard' element={<UserDashboard />} />
       </Routes>
     </>
   );
