@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Icon, Sidebar } from '../../components';
 
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
+const PrintersPage = lazy(() => import('../../pages/Admin/Printers'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -59,6 +60,14 @@ const AdminRoutes: FC = () => {
           element={
             <Suspense fallback={null}>
               <DashboardPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/printers'
+          element={
+            <Suspense fallback={null}>
+              <PrintersPage />
             </Suspense>
           }
         />
