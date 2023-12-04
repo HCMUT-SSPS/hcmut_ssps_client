@@ -11,7 +11,7 @@ import { axios } from '../../../utils/customAxios';
 
 import { Printer, PrinterStatus } from '../../../typings';
 
-const Printers: FC = () => {
+const PrintersList: FC = () => {
   const [printers, setPrinters] = useState<Printer[]>([]);
   const [currentPrinterId, setCurrentPrinterId] = useState<number | null>(null);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -312,4 +312,4 @@ const Printers: FC = () => {
   );
 };
 
-export default Printers;
+export default PrintersList;

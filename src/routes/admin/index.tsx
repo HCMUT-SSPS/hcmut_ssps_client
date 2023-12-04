@@ -4,7 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Icon, Sidebar } from '../../components';
 
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
-const PrintersPage = lazy(() => import('../../pages/Admin/Printers'));
+const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
+const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -67,10 +68,19 @@ const AdminRoutes: FC = () => {
           path='/printers'
           element={
             <Suspense fallback={null}>
-              <PrintersPage />
+              <PrintersListPage />
             </Suspense>
           }
-        />
+        >
+          <Route
+            path='/add'
+            element={
+              <Suspense fallback={null}>
+                <AddPrinterPage />
+              </Suspense>
+            }
+          />
+        </Route>
         <Route path='*' element={<div>Not Found</div>} />
       </Routes>
     </>
