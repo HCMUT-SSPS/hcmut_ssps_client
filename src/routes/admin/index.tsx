@@ -1,5 +1,5 @@
 import { FC, Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 
@@ -64,16 +64,17 @@ const AdminRoutes: FC = () => {
             </Suspense>
           }
         />
-        <Route
-          path='/printers'
-          element={
-            <Suspense fallback={null}>
-              <PrintersListPage />
-            </Suspense>
-          }
-        >
+        <Route path='/printers' element={<Outlet />}>
           <Route
-            path='/add'
+            path=''
+            element={
+              <Suspense fallback={null}>
+                <PrintersListPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='add'
             element={
               <Suspense fallback={null}>
                 <AddPrinterPage />

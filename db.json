@@ -44,8 +44,8 @@
       "paperSlot": 80,
       "printedToday": 20,
       "printerId": "bk_server_2_2a",
-      "startedAt": 1701561650000,
-      "status": "OFFLINE",
+      "startedAt": 1701699117987,
+      "status": "ONLINE",
       "totalPrinted": 20
     },
     {
@@ -68,8 +68,8 @@
       "paperSlot": 12,
       "printedToday": 139,
       "printerId": "bk_server_2_2c",
-      "startedAt": 1699927250000,
-      "status": "OFFLINE",
+      "startedAt": 1701699103502,
+      "status": "ONLINE",
       "totalPrinted": 843
     },
     {
@@ -143,6 +143,18 @@
       "startedAt": 1699924061000,
       "status": "OFFLINE",
       "totalPrinted": 1394
+    },
+    {
+      "id": 13,
+      "name": "Canon Maxify GX6070",
+      "address": "Room 605, Building A4",
+      "paperSlot": 0,
+      "printerId": "bk_server_1_1d",
+      "onQueue": 0,
+      "totalPrinted": 0,
+      "printedToday": 0,
+      "startedAt": 1701698326493,
+      "status": "ONLINE"
     }
   ]
 }

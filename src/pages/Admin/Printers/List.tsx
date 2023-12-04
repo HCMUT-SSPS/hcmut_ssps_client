@@ -57,6 +57,8 @@ const PrintersList: FC = () => {
           currentPrinter.status === PrinterStatus.ONLINE
             ? PrinterStatus.OFFLINE
             : PrinterStatus.ONLINE,
+        startedAt:
+          currentPrinter.status === PrinterStatus.OFFLINE ? Date.now() : currentPrinter.startedAt,
       });
       setPrinters((prev) => prev.map((printer) => (printer.id === data.id ? data : printer)));
     } catch {
@@ -75,7 +77,9 @@ const PrintersList: FC = () => {
     <Page title='Printers'>
       <div className='flex w-full flex-col'>
         <nav className='relative w-full bg-green-900'>
-          <h1 className='px-10 py-5 text-2xl/normal font-semibold text-white'>Printers List</h1>
+          <h1 className='select-none px-10 py-5 text-2xl/normal font-semibold text-white'>
+            Printers List
+          </h1>
           <img className='absolute right-0 top-0 h-full w-auto' src={HeaderBackground} />
         </nav>
 
@@ -178,7 +182,7 @@ const PrintersList: FC = () => {
                       {printer.printerId}
                     </Td>
                     <Td
-                      className={`max-w-[200px] truncate whitespace-nowrap ${
+                      className={`truncate whitespace-nowrap 2xl:max-w-[200px] ${
                         printer.status === PrinterStatus.OFFLINE ? 'text-[#F63B3B]' : ''
                       }`}
                     >
@@ -212,7 +216,7 @@ const PrintersList: FC = () => {
                       {printer.printedToday || 'N/A'}
                     </Td>
                     <Td
-                      className={`font-semibold ${
+                      className={`relative font-semibold ${
                         printer.status === PrinterStatus.ONLINE
                           ? 'text-[#88C56C]'
                           : 'text-[#F63B3B]'
@@ -269,12 +273,6 @@ const PrintersList: FC = () => {
                   </h4>
                   <p className='border-b border-b-[#E5E7EB] bg-white px-5 py-3 text-green-900'>
                     {formatUptime(Date.now() - currentPrinter.startedAt)}
-                  </p>
-                  <h4 className='border-b border-b-[#E5E7EB] bg-green-900/20 px-5 py-3 font-medium text-green-900'>
-                    Ink Information
-                  </h4>
-                  <p className='border-b border-b-[#E5E7EB] bg-white px-5 py-3 text-green-900'>
-                    1000ml Dtf Ink Transfer Film Printing Ink Dtf Ink
                   </p>
                   <h4 className='border-b border-b-[#E5E7EB] bg-green-900/20 px-5 py-3 font-medium text-green-900'>
                     Paper Slot
