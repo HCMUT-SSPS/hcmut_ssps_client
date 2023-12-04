@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 import UserDashboard from '../../pages/User/Dashboard';
+import Notifications from '../../pages/User/Notifications';
 import PrintingService from '../../pages/User/PrintingService';
 
 const UserRoutes: FC = () => {
@@ -46,6 +47,7 @@ const UserRoutes: FC = () => {
         <Route path='*' element={<div>Not found</div>} />
         <Route path='/dashboard' element={<UserDashboard />} />
         <Route path='/printing' element={<PrintingService />} />
+        <Route path='/notifications' element={<Notifications />} />
       </Routes>
     </>
   );
