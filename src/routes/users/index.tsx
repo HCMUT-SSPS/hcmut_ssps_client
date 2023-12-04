@@ -5,6 +5,7 @@ import { Icon, Sidebar } from '../../components';
 import UserDashboard from '../../pages/User/Dashboard';
 import Notifications from '../../pages/User/Notifications';
 import PrintingService from '../../pages/User/PrintingService';
+import UserProfile from '../../pages/User/UserProfile';
 
 const UserRoutes: FC = () => {
   return (
@@ -48,6 +49,7 @@ const UserRoutes: FC = () => {
         <Route path='/dashboard' element={<UserDashboard />} />
         <Route path='/printing' element={<PrintingService />} />
         <Route path='/notifications' element={<Notifications />} />
+        <Route path='/settings' element={<UserProfile />} />
       </Routes>
     </>
   );
