@@ -6,7 +6,7 @@ const Configurations: FC = () => {
   return (
     <div className='flex h-[100vh] flex-col p-10'>
       <h1 className='text-2xl font-semibold text-green-900'>Printing Service</h1>
-      <StepIndicator currentStep={3} />
+      <StepIndicator currentStep={1} />
       <div className='mt-10 flex w-[360px] flex-col space-y-6'>
         <div className='flex w-full flex-col space-y-[10px]'>
           <label htmlFor='campus' className='font-semibold text-gray-700'>
