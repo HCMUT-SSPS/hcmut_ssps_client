@@ -21,6 +21,7 @@ import HouseFill from '../../assets/svgs/icons/HouseFill.svg?react';
 import Leaf from '../../assets/svgs/icons/Leaf.svg?react';
 import Lightbulb from '../../assets/svgs/icons/Lightbulb.svg?react';
 import LogoLarge from '../../assets/svgs/icons/LogoLarge.svg?react';
+import MagnifyingGlass from '../../assets/svgs/icons/MagnifyingGlass.svg?react';
 import NoteBlank from '../../assets/svgs/icons/NoteBlank.svg?react';
 import Printer from '../../assets/svgs/icons/Printer.svg?react';
 import PrinterFill from '../../assets/svgs/icons/PrinterFill.svg?react';
@@ -68,6 +69,7 @@ export default {
   Lightbulb,
   Logo,
   LogoLarge,
+  MagnifyingGlass,
   NoteBlank,
   Printer: {
     Outlined: Printer,

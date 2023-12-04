@@ -122,7 +122,9 @@ const UserDashboard: FC = () => {
                     Dec 23, 2023
                   </Td>
                   <Td>
-                    <div className='rounded-[4px] bg-green-900 px-3 py-2 text-white'>Ready</div>
+                    <div className='flex items-center justify-center rounded-[4px] bg-green-900 px-3 py-2 text-white'>
+                      Ready
+                    </div>
                   </Td>
                 </Tr>
                 <Tr className='text-[12px] text-gray-500'>
@@ -145,7 +147,9 @@ const UserDashboard: FC = () => {
                     Dec 23, 2023
                   </Td>
                   <Td>
-                    <div className='rounded-[4px] bg-[#F8B545] px-3 py-2 text-white'>Waiting</div>
+                    <div className='flex items-center justify-center rounded-[4px] bg-[#F8B545] px-3 py-2 text-white'>
+                      Waiting
+                    </div>
                   </Td>
                 </Tr>
                 <Tr className='text-[12px] text-gray-500'>
@@ -168,7 +172,9 @@ const UserDashboard: FC = () => {
                     Dec 23, 2023
                   </Td>
                   <Td>
-                    <div className='rounded-[4px] bg-[#88C56C] px-3 py-2 text-white'>Printing</div>
+                    <div className='flex items-center justify-center rounded-[4px] bg-[#88C56C] px-3 py-2 text-white'>
+                      Printing
+                    </div>
                   </Td>
                 </Tr>
                 <Tr className='text-[12px] text-gray-500'>
@@ -191,7 +197,9 @@ const UserDashboard: FC = () => {
                     Dec 23, 2023
                   </Td>
                   <Td>
-                    <div className='rounded-[4px] bg-[#F8B545] px-3 py-2 text-white'>Waiting</div>
+                    <div className='flex items-center justify-center rounded-[4px] bg-[#F8B545] px-3 py-2 text-white'>
+                      Waiting
+                    </div>
                   </Td>
                 </Tr>
               </Tbody>

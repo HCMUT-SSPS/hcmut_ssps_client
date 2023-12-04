@@ -1,33 +1,84 @@
 import { FC } from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 
-import ForestBackground from '../../../assets/images/ForestBackground.png';
-import TreeBackground from '../../../assets/images/TreeBackground.png';
 import { Icon } from '../../../components';
 import { Page } from '../../../layouts';
 
-const PrintingService: FC = () => {
+const ActivityLogs: FC = () => {
   return (
-    <Page title='Printing'>
-      <div className='flex space-x-4 px-10 py-10'>
-        <section className='flex w-full flex-col xl:w-[78%]'>
-          <div className='flex flex-col'>
-            <h1 className='text-2xl font-semibold text-green-900'>Printing Service</h1>
-            <p className='mt-2 max-w-[640px]'>
-              Printing Service is a service to enable printing for laptop, wireless and
-              unauthenticated users without the need to install print drivers. To upload a document
-              for printing, click Submit a Request.
-            </p>
-            <button className='mt-6 flex w-fit items-center space-x-2 rounded-lg bg-green-900 px-10 py-4'>
-              <p className='font-semibold text-white'>Submit a Request</p>
-              <Icon.ArrowRight />
+    <Page title='Logs'>
+      <div className='p-10'>
+        <h1 className='text-2xl font-semibold text-green-900'>Activity Logs</h1>
+        <div className='mt-10 flex flex-col space-y-10 lg:space-x-6 xl:flex-row xl:space-y-0'>
+          <section className='flex flex-col rounded-xl bg-green-50 p-4 pb-5 xl:w-[24%]'>
+            <div className='flex items-center justify-between'>
+              <h2 className='text-xl font-semibold text-gray-700'>Filter</h2>
+              <button className='text-[12px]'>Clear all</button>
+            </div>
+            <div className='mt-5 flex items-center space-x-2 rounded-[6px] border-[1px] border-[#E5E7EB] bg-white px-3'>
+              <Icon.MagnifyingGlass className='h-4 w-4' />
+              <input type='text' placeholder='Search' className='py-[10px] text-[12px]' />
+            </div>
+            <div className='mt-4 flex flex-col space-y-[14px] 2xl:flex-row 2xl:space-x-1 2xl:space-y-0'>
+              <div className='flex w-full flex-col space-y-[6px]'>
+                <label htmlFor='start-date' className='font-semibold text-gray-700'>
+                  From Date
+                </label>
+                <input
+                  type='date'
+                  id='start-date'
+                  className='rounded-[6px] border-[1px] border-[#E5E7EB] p-2 text-[12px]'
+                />
+              </div>
+              <div className='flex w-full flex-col space-y-[6px]'>
+                <label htmlFor='end-date' className='font-semibold text-gray-700'>
+                  To Date
+                </label>
+                <input
+                  type='date'
+                  id='end-date'
+                  className='rounded-[6px] border-[1px] border-[#E5E7EB] p-2 text-[12px]'
+                />
+              </div>
+            </div>
+            <div className='mt-[14px] flex w-full flex-col space-y-[6px]'>
+              <label htmlFor='campus' className='font-semibold text-gray-700'>
+                Campus
+              </label>
+              <input
+                type='text'
+                id='campus'
+                placeholder='Select input'
+                className='rounded-[6px] border-[1px] border-[#E5E7EB] px-4 py-3'
+              />
+            </div>
+            <div className='mt-[14px] flex w-full flex-col space-y-[6px]'>
+              <label htmlFor='building' className='font-semibold text-gray-700'>
+                Building
+              </label>
+              <input
+                type='text'
+                id='building'
+                placeholder='Select input'
+                className='rounded-[6px] border-[1px] border-[#E5E7EB] px-4 py-3'
+              />
+            </div>
+            <div className='mt-[14px] flex w-full flex-col space-y-[6px]'>
+              <label htmlFor='status' className='font-semibold text-gray-700'>
+                Status
+              </label>
+              <input
+                type='text'
+                id='status'
+                placeholder='Select input'
+                className='rounded-[6px] border-[1px] border-[#E5E7EB] px-4 py-3'
+              />
+            </div>
+            <button className='mt-6 self-end rounded-lg bg-green-900 px-7 py-2 font-semibold text-white'>
+              Proceed
             </button>
-          </div>
-          <div className='mt-10 flex flex-1 flex-col gap-y-4'>
-            <h1 className='text-xl/tight font-semibold text-green-900 2xl:text-2xl/tight'>
-              Recent Requests
-            </h1>
-
+          </section>
+          <section>
             <Table>
               <Thead className='text-xs/tight 2xl:text-sm/tight'>
                 <Tr>
@@ -143,26 +194,11 @@ const PrintingService: FC = () => {
                 </Tr>
               </Tbody>
             </Table>
-          </div>
-        </section>
-        <section className='hidden h-[100vh] flex-1 flex-col items-end xl:flex'>
-          <div className='relative flex h-full w-full max-w-[256px] justify-center rounded-2xl bg-green-900 px-7 pt-[50px]'>
-            <p className='text-center text-2xl text-white'>Print The Amount You Need</p>
-            <img
-              src={ForestBackground}
-              alt='Forest Background'
-              className='absolute bottom-0 left-0 h-[200px] rounded-es-2xl'
-            />
-            <img
-              src={TreeBackground}
-              alt='Tree Background'
-              className='absolute bottom-0 right-0 h-[200px] rounded-ee-2xl'
-            />
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </Page>
   );
 };
 
-export default PrintingService;
+export default ActivityLogs;

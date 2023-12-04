@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
+import ActivityLogs from '../../pages/User/ActivityLogs';
 import UserDashboard from '../../pages/User/Dashboard';
 import Notifications from '../../pages/User/Notifications';
 import PrintingService from '../../pages/User/PrintingService';
@@ -50,6 +51,7 @@ const UserRoutes: FC = () => {
         <Route path='/printing' element={<PrintingService />} />
         <Route path='/notifications' element={<Notifications />} />
         <Route path='/settings' element={<UserProfile />} />
+        <Route path='/logs' element={<ActivityLogs />} />
       </Routes>
     </>
   );
