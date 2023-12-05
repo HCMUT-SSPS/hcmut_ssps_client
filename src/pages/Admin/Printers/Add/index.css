@@ -1,0 +1,39 @@
+#brand .brand-select__control {
+  border-width: 1px;
+  border-color: #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+#brand .brand-select__value-container {
+  padding: 0;
+}
+
+#brand .brand-select__single-value {
+  color: #6b7280;
+}
+
+#brand .brand-select__input-container {
+  margin: 0;
+  padding: 0;
+}
+
+#brand .brand-select__indicator {
+  padding: 0;
+}
+
+#brand .brand-select__indicator-separator {
+  display: none;
+}
+
+#brand .brand-select__option {
+  font-family: 'Rubik';
+}
+
+#brand .brand-select__option--is-selected {
+  background-color: #064635;
+}
+
+#brand .brand-select__option--is-focused {
+  background-color: #064635;
+  color: white;
+}

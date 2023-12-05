@@ -1,0 +1,17 @@
+export const PrinterBrands = [
+  'Brother',
+  'Canon',
+  'Dell',
+  'Epson',
+  'HP',
+  'IBM',
+  'Kodak',
+  'Kyocera',
+  'Lexmark',
+  'Oki',
+  'Panasonic',
+  'Ricoh',
+  'Samsung',
+  'Sharp',
+  'Xerox',
+];

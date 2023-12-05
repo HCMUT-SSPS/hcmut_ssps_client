@@ -1,9 +1,11 @@
 import { FC, Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
+const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
+const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -62,6 +64,24 @@ const AdminRoutes: FC = () => {
             </Suspense>
           }
         />
+        <Route path='/printers' element={<Outlet />}>
+          <Route
+            path=''
+            element={
+              <Suspense fallback={null}>
+                <PrintersListPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='add'
+            element={
+              <Suspense fallback={null}>
+                <AddPrinterPage />
+              </Suspense>
+            }
+          />
+        </Route>
         <Route path='*' element={<div>Not Found</div>} />
       </Routes>
     </>

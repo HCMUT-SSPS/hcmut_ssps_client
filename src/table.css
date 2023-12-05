@@ -6,6 +6,10 @@
   display: none;
 }
 
+.pad-right {
+  border-right: 16px solid transparent;
+}
+
 .responsiveTable tr {
   margin: 0 5px;
   border-bottom: 1px solid #e5e7eb;
@@ -14,13 +18,11 @@
 .responsiveTable th {
   text-align: left;
   padding: 0.75rem 1.25rem;
-  border-right: 16px solid transparent;
 }
 
 .responsiveTable td {
   text-align: left;
   padding: 0.75rem 1.25rem;
-  border-right: 16px solid transparent;
 }
 
 @media screen and (max-width: 1200px) {
