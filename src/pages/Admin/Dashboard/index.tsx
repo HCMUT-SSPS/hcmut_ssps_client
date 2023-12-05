@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 
@@ -6,8 +6,23 @@ import Chart from '../../../assets/svgs/Chart.svg?react';
 import PerformanceChart from '../../../assets/svgs/PerformanceChart.svg?react';
 import { Icon } from '../../../components';
 import { Page } from '../../../layouts';
+import { formatUptime } from '../../../utils';
+import { axios } from '../../../utils/customAxios';
+
+import { Printer, PrinterStatus } from '../../../typings';
 
 const Dashboard: FC = () => {
+  const [printers, setPrinters] = useState<Printer[]>([]);
+
+  useEffect(() => {
+    axios
+      .get<Printer[]>('/printers')
+      .then((res) => {
+        setPrinters(res.data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <Page title='Dashboard'>
       <div className='flex w-full flex-col'>
@@ -156,49 +171,55 @@ const Dashboard: FC = () => {
               <Table>
                 <Thead className='text-xs/tight 2xl:text-sm/tight'>
                   <Tr>
-                    <Th className='uppercase'>Printer ID</Th>
-                    <Th className='uppercase'>Location</Th>
-                    <Th className='uppercase'>Latest uptime</Th>
-                    <Th className='uppercase'>Printed Today</Th>
-                    <Th className='uppercase'>Status</Th>
+                    <Th className='pad-right uppercase'>Printer ID</Th>
+                    <Th className='pad-right uppercase'>Location</Th>
+                    <Th className='pad-right uppercase'>Latest uptime</Th>
+                    <Th className='pad-right uppercase'>Printed Today</Th>
+                    <Th className='pad-right uppercase'>Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td>bk_server_1_a4_1a</Td>
-                    <Td>Room A605, Building A4</Td>
-                    <Td>32d40m</Td>
-                    <Td>20 pages</Td>
-                    <Td className='font-semibold text-[#88C56C]'>Online</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>bk_server_1_a4_1b</Td>
-                    <Td>Room A605, Building A4</Td>
-                    <Td>32d40m</Td>
-                    <Td>12 pages</Td>
-                    <Td className='font-semibold text-[#88C56C]'>Online</Td>
-                  </Tr>
-                  <Tr>
-                    <Td className='text-[#F63B3B]'>bk_server_2_c5_1c</Td>
-                    <Td className='text-[#F63B3B]'>Room C213, Building C5</Td>
-                    <Td className='text-[#F63B3B]'>2d40m</Td>
-                    <Td>N/A</Td>
-                    <Td className='font-semibold text-[#F63B3B]'>Offline</Td>
-                  </Tr>
-                  <Tr>
-                    <Td>bk_server_3_b5_1d</Td>
-                    <Td>Room B212, Building B5</Td>
-                    <Td>100d23m</Td>
-                    <Td>100 pages</Td>
-                    <Td className='font-semibold text-[#88C56C]'>Online</Td>
-                  </Tr>
-                  <Tr>
-                    <Td className='text-[#F63B3B]'>bk_server_4_c6_1a</Td>
-                    <Td className='text-[#F63B3B]'>Room C601, Building C6</Td>
-                    <Td className='text-[#F63B3B]'>2d40m</Td>
-                    <Td>N/A</Td>
-                    <Td className='font-semibold text-[#F63B3B]'>Offline</Td>
-                  </Tr>
+                  {printers.slice(0, 5).map((printer) => (
+                    <Tr key={printer.id} className='font-extralight text-[#1F2937]'>
+                      <Td
+                        className={`pad-right ${
+                          printer.status === PrinterStatus.OFFLINE ? 'text-[#F63B3B]' : ''
+                        }`}
+                      >
+                        {printer.printerId}
+                      </Td>
+                      <Td
+                        className={`pad-right ${
+                          printer.status === PrinterStatus.OFFLINE ? 'text-[#F63B3B]' : ''
+                        }`}
+                      >
+                        {printer.address}
+                      </Td>
+                      <Td
+                        className={`pad-right ${
+                          printer.status === PrinterStatus.OFFLINE ? 'text-[#F63B3B]' : ''
+                        }`}
+                      >
+                        {formatUptime(Date.now() - printer.startedAt)}
+                      </Td>
+                      <Td
+                        className={`pad-right ${
+                          printer.status === PrinterStatus.OFFLINE ? 'text-[#F63B3B]' : ''
+                        }`}
+                      >
+                        {printer.printedToday || 'N/A'}
+                      </Td>
+                      <Td
+                        className={`pad-right font-semibold ${
+                          printer.status === PrinterStatus.ONLINE
+                            ? 'text-[#88C56C]'
+                            : 'text-[#F63B3B]'
+                        }`}
+                      >
+                        {printer.status}
+                      </Td>
+                    </Tr>
+                  ))}
                 </Tbody>
               </Table>
             </div>

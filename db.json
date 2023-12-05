@@ -1,0 +1,177 @@
+{
+  "printers": [
+    {
+      "address": "Room 605, Building A4",
+      "id": 1,
+      "name": "HP LaserJet 1020",
+      "onQueue": 29,
+      "paperSlot": 100,
+      "printedToday": 100,
+      "printerId": "bk_server_1_1a",
+      "startedAt": 1700791250000,
+      "status": "ONLINE",
+      "totalPrinted": 1000
+    },
+    {
+      "address": "Room 605, Building A4",
+      "id": 2,
+      "name": "HP LaserJet 1020",
+      "onQueue": 130,
+      "paperSlot": 88,
+      "printedToday": 12,
+      "printerId": "bk_server_1_1b",
+      "startedAt": 1700532050000,
+      "status": "ONLINE",
+      "totalPrinted": 927
+    },
+    {
+      "address": "Room 605, Building A4",
+      "id": 3,
+      "name": "HP LaserJet 1020",
+      "onQueue": 130,
+      "paperSlot": 88,
+      "printedToday": 13,
+      "printerId": "bk_server_1_1c",
+      "startedAt": 1701309650000,
+      "status": "ONLINE",
+      "totalPrinted": 183
+    },
+    {
+      "address": "Room 305, Building B4",
+      "id": 4,
+      "name": "HP Color LaserJet Enterprise M553dn",
+      "onQueue": 0,
+      "paperSlot": 80,
+      "printedToday": 20,
+      "printerId": "bk_server_2_2a",
+      "startedAt": 1701699117987,
+      "status": "ONLINE",
+      "totalPrinted": 20
+    },
+    {
+      "address": "Room 305, Building B4",
+      "id": 5,
+      "name": "HP Color LaserJet Enterprise M553dn",
+      "onQueue": 130,
+      "paperSlot": 100,
+      "printedToday": 150,
+      "printerId": "bk_server_2_2b",
+      "startedAt": 1701525650000,
+      "status": "ONLINE",
+      "totalPrinted": 150
+    },
+    {
+      "address": "Room 305, Building B4",
+      "id": 6,
+      "name": "HP Color LaserJet Enterprise M553dn",
+      "onQueue": 200,
+      "paperSlot": 12,
+      "printedToday": 139,
+      "printerId": "bk_server_2_2c",
+      "startedAt": 1701699103502,
+      "status": "ONLINE",
+      "totalPrinted": 843
+    },
+    {
+      "address": "Room 305, Building B4",
+      "id": 7,
+      "name": "HP Color LaserJet Enterprise M553dn",
+      "onQueue": 0,
+      "paperSlot": 100,
+      "printedToday": 0,
+      "printerId": "bk_server_2_2d",
+      "startedAt": 1701565250000,
+      "status": "OFFLINE",
+      "totalPrinted": 0
+    },
+    {
+      "address": "Room 305, Building B4",
+      "id": 8,
+      "name": "HP Color LaserJet Enterprise M553dn",
+      "onQueue": 23,
+      "paperSlot": 100,
+      "printedToday": 53,
+      "printerId": "bk_server_2_2e",
+      "startedAt": 1697853650000,
+      "status": "ONLINE",
+      "totalPrinted": 2895
+    },
+    {
+      "address": "Room 102, Building C6",
+      "id": 9,
+      "name": "Brother HL-L2321D",
+      "onQueue": 23,
+      "paperSlot": 74,
+      "printedToday": 53,
+      "printerId": "bk_server_3_3a",
+      "startedAt": 1701307730000,
+      "status": "ONLINE",
+      "totalPrinted": 258
+    },
+    {
+      "address": "Room 102, Building C6",
+      "id": 10,
+      "name": "Brother HL-L2321D",
+      "onQueue": 83,
+      "paperSlot": 25,
+      "printedToday": 13,
+      "printerId": "bk_server_3_3b",
+      "startedAt": 1701380390000,
+      "status": "ONLINE",
+      "totalPrinted": 245
+    },
+    {
+      "address": "Room 102, Building C6",
+      "id": 11,
+      "name": "Brother HL-L2321D",
+      "onQueue": 30,
+      "paperSlot": 48,
+      "printedToday": 63,
+      "printerId": "bk_server_3_3c",
+      "startedAt": 1701236930000,
+      "status": "ONLINE",
+      "totalPrinted": 352
+    },
+    {
+      "address": "Room 501, Building C5",
+      "id": 12,
+      "name": "Canon LBP 2900",
+      "onQueue": 0,
+      "paperSlot": 100,
+      "printedToday": 0,
+      "printerId": "bk_server_4_4a",
+      "startedAt": 1699924061000,
+      "status": "OFFLINE",
+      "totalPrinted": 1394
+    },
+    {
+      "address": "Room 605, Building A4",
+      "id": 13,
+      "name": "Canon Maxify GX6070",
+      "onQueue": 0,
+      "paperSlot": 0,
+      "printedToday": 0,
+      "printerId": "bk_server_1_1d",
+      "startedAt": 1701698326493,
+      "status": "ONLINE",
+      "totalPrinted": 0
+    }
+  ],
+  "settings": {
+    "fileTypes": {
+      ".doc": true,
+      ".docx": true,
+      ".jpeg": true,
+      ".jpg": true,
+      ".pdf": true,
+      ".png": true,
+      ".ppt": true,
+      ".pptx": true,
+      ".xls": true,
+      ".xlsx": true
+    },
+    "maximumFileSize": 12300,
+    "monthlyQuota": 100,
+    "provisionDate": 18
+  }
+}

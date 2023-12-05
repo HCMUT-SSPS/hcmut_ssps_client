@@ -1,9 +1,14 @@
 import { FC, Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
+const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
+const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
+const ReportsPage = lazy(() => import('../../pages/Admin/Reports'));
+const NotificationsPage = lazy(() => import('../../pages/Admin/Notifications'));
+const SettingsPage = lazy(() => import('../../pages/Admin/Settings'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -21,18 +26,6 @@ const AdminRoutes: FC = () => {
             path: '/admin/printers',
             Icon: Icon.Printer.Outlined,
             IconFill: Icon.Printer.Filled,
-          },
-          {
-            name: 'Activity Logs',
-            path: '/admin/logs',
-            Icon: Icon.FileSearch.Outlined,
-            IconFill: Icon.FileSearch.Filled,
-          },
-          {
-            name: 'Users',
-            path: '/admin/users',
-            Icon: Icon.User.Outlined,
-            IconFill: Icon.User.Filled,
           },
           {
             name: 'Reports',
@@ -59,6 +52,48 @@ const AdminRoutes: FC = () => {
           element={
             <Suspense fallback={null}>
               <DashboardPage />
+            </Suspense>
+          }
+        />
+        <Route path='/printers' element={<Outlet />}>
+          <Route
+            path=''
+            element={
+              <Suspense fallback={null}>
+                <PrintersListPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='add'
+            element={
+              <Suspense fallback={null}>
+                <AddPrinterPage />
+              </Suspense>
+            }
+          />
+        </Route>
+        <Route
+          path='/reports'
+          element={
+            <Suspense fallback={null}>
+              <ReportsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/notifications'
+          element={
+            <Suspense fallback={null}>
+              <NotificationsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/settings'
+          element={
+            <Suspense fallback={null}>
+              <SettingsPage />
             </Suspense>
           }
         />

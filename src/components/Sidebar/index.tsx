@@ -123,7 +123,7 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
         </Menu>
       </div>
       <div className='flex flex-row items-center justify-between'>
-        <div className='flex flex-row items-center gap-x-2'>
+        <Link to='profile' className='flex flex-row items-center gap-x-2'>
           <img
             src={user.avatar}
             alt="user's profile picture"
@@ -133,7 +133,7 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
             <p className='text-base/normal font-medium text-gray-700'>{user.name}</p>
             <p className='text-sm/normal font-normal'>{user.isManager ? 'Admin' : 'Student'}</p>
           </div>
-        </div>
+        </Link>
         <button
           className='flex flex-row items-center gap-x-2'
           onClick={() => {
