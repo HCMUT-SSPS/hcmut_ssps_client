@@ -7,6 +7,7 @@ const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
 const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
 const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
 const ReportsPage = lazy(() => import('../../pages/Admin/Reports'));
+const NotificationsPage = lazy(() => import('../../pages/Admin/Notifications'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -82,6 +83,14 @@ const AdminRoutes: FC = () => {
           element={
             <Suspense fallback={null}>
               <ReportsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/notifications'
+          element={
+            <Suspense fallback={null}>
+              <NotificationsPage />
             </Suspense>
           }
         />
