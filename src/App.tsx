@@ -1,8 +1,11 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { useStorage } from './hooks';
 import { AdminRoutes, AuthRoutes, UserRoutes } from './routes';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import { User } from './typings';
 
@@ -13,6 +16,7 @@ const App = () => {
 
   return (
     <>
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route
