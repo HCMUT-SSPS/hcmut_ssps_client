@@ -4,6 +4,7 @@ import ChartLine from '../../assets/svgs/icons/ChartLine.svg?react';
 import Check from '../../assets/svgs/icons/Check.svg?react';
 import CheckFill from '../../assets/svgs/icons/CheckFill.svg?react';
 import ChevronDouble from '../../assets/svgs/icons/ChevronDouble.svg?react';
+import Excel from '../../assets/svgs/icons/Excel.svg?react';
 import Eye from '../../assets/svgs/icons/Eye.svg?react';
 import EyeClosed from '../../assets/svgs/icons/EyeClosed.svg?react';
 import FileSearch from '../../assets/svgs/icons/FileSearch.svg?react';
@@ -15,6 +16,7 @@ import HouseFill from '../../assets/svgs/icons/HouseFill.svg?react';
 import Leaf from '../../assets/svgs/icons/Leaf.svg?react';
 import Lightbulb from '../../assets/svgs/icons/Lightbulb.svg?react';
 import MagnifyingGlass from '../../assets/svgs/icons/MagnifyingGlass.svg?react';
+import Pdf from '../../assets/svgs/icons/Pdf.svg?react';
 import Printer from '../../assets/svgs/icons/Printer.svg?react';
 import PrinterFill from '../../assets/svgs/icons/PrinterFill.svg?react';
 import SignOut from '../../assets/svgs/icons/SignOut.svg?react';
@@ -33,6 +35,7 @@ export default {
     Filled: CheckFill,
   },
   ChevronDouble,
+  Excel,
   Eye: {
     Opened: Eye,
     Closed: EyeClosed,
@@ -52,6 +55,7 @@ export default {
   Leaf,
   Lightbulb,
   MagnifyingGlass,
+  Pdf,
   Printer: {
     Outlined: Printer,
     Filled: PrinterFill,

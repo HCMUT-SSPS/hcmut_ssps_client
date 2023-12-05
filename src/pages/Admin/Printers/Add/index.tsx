@@ -1,15 +1,13 @@
 import { FC, FormEvent, useState } from 'react';
 import { findLastIndex, max } from 'lodash';
 import { Link } from 'react-router-dom';
-import Select from 'react-select';
 
 import db from '../../../../../db.json';
 import HeaderBackground from '../../../../assets/images/HeaderBackground.png';
+import { Select } from '../../../../components';
 import { PrinterBrands } from '../../../../data/printerBrands';
 import { Page } from '../../../../layouts';
 import { axios } from '../../../../utils/customAxios';
-
-import './index.css';
 
 import { PrinterStatus } from '../../../../typings';
 
@@ -118,11 +116,6 @@ const AddPrinter: FC = () => {
                   value={form.brand === '' ? null : { value: form.brand, label: form.brand }}
                   onChange={(e) => setForm({ ...form, brand: e?.value ?? '' })}
                   placeholder='Select Printer Brand...'
-                  classNames={{
-                    control: () => 'px-4 py-3 shadow-[0_1px_2px_0_rgba(0,0,0,0.2)]',
-                    singleValue: () => 'text-base/normal font-medium text-[#6B7280]',
-                  }}
-                  classNamePrefix={'brand-select'}
                   menuPlacement='auto'
                 />
               </div>

@@ -6,6 +6,7 @@ import { Icon, Sidebar } from '../../components';
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
 const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
 const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
+const ReportsPage = lazy(() => import('../../pages/Admin/Reports'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -23,12 +24,6 @@ const AdminRoutes: FC = () => {
             path: '/admin/printers',
             Icon: Icon.Printer.Outlined,
             IconFill: Icon.Printer.Filled,
-          },
-          {
-            name: 'Activity Logs',
-            path: '/admin/logs',
-            Icon: Icon.FileSearch.Outlined,
-            IconFill: Icon.FileSearch.Filled,
           },
           {
             name: 'Users',
@@ -82,6 +77,14 @@ const AdminRoutes: FC = () => {
             }
           />
         </Route>
+        <Route
+          path='/reports'
+          element={
+            <Suspense fallback={null}>
+              <ReportsPage />
+            </Suspense>
+          }
+        />
         <Route path='*' element={<div>Not Found</div>} />
       </Routes>
     </>

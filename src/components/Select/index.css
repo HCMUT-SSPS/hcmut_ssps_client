@@ -1,0 +1,40 @@
+.react-select__container .react-select__control {
+  border-width: 1px;
+  border-color: #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+.react-select__container .react-select__value-container {
+  padding: 0;
+}
+
+.react-select__container .react-select__single-value {
+  color: #6b7280;
+}
+
+.react-select__container .react-select__input-container {
+  margin: 0;
+  padding: 0;
+}
+
+.react-select__container .react-select__indicator {
+  padding: 0;
+}
+
+.react-select__container .react-select__indicator-separator {
+  display: none;
+}
+
+.react-select__container .react-select__option {
+  font-family: 'Rubik';
+}
+
+.react-select__container .react-select__option--is-selected,
+.react-select__container .react-select__option--is-selected.react-select__option--is-focused {
+  background-color: #064635;
+  color: white;
+}
+
+.react-select__container .react-select__option--is-focused {
+  background-color: rgb(74 222 128 / 0.1);
+}
