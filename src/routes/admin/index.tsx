@@ -8,6 +8,7 @@ const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
 const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
 const ReportsPage = lazy(() => import('../../pages/Admin/Reports'));
 const NotificationsPage = lazy(() => import('../../pages/Admin/Notifications'));
+const SettingsPage = lazy(() => import('../../pages/Admin/Settings'));
 
 const AdminRoutes: FC = () => {
   return (
@@ -25,12 +26,6 @@ const AdminRoutes: FC = () => {
             path: '/admin/printers',
             Icon: Icon.Printer.Outlined,
             IconFill: Icon.Printer.Filled,
-          },
-          {
-            name: 'Users',
-            path: '/admin/users',
-            Icon: Icon.User.Outlined,
-            IconFill: Icon.User.Filled,
           },
           {
             name: 'Reports',
@@ -91,6 +86,14 @@ const AdminRoutes: FC = () => {
           element={
             <Suspense fallback={null}>
               <NotificationsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/settings'
+          element={
+            <Suspense fallback={null}>
+              <SettingsPage />
             </Suspense>
           }
         />

@@ -145,16 +145,33 @@
       "totalPrinted": 1394
     },
     {
+      "address": "Room 605, Building A4",
       "id": 13,
       "name": "Canon Maxify GX6070",
-      "address": "Room 605, Building A4",
-      "paperSlot": 0,
-      "printerId": "bk_server_1_1d",
       "onQueue": 0,
-      "totalPrinted": 0,
+      "paperSlot": 0,
       "printedToday": 0,
+      "printerId": "bk_server_1_1d",
       "startedAt": 1701698326493,
-      "status": "ONLINE"
+      "status": "ONLINE",
+      "totalPrinted": 0
     }
-  ]
+  ],
+  "settings": {
+    "fileTypes": {
+      ".doc": true,
+      ".docx": true,
+      ".jpeg": true,
+      ".jpg": true,
+      ".pdf": true,
+      ".png": true,
+      ".ppt": true,
+      ".pptx": true,
+      ".xls": true,
+      ".xlsx": true
+    },
+    "maximumFileSize": 12300,
+    "monthlyQuota": 100,
+    "provisionDate": 18
+  }
 }
