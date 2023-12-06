@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 
 import { Icon } from '../../../components';
@@ -7,8 +7,19 @@ import { useStorage } from '../../../hooks';
 import { Page } from '../../../layouts';
 import { Request } from '../../../typings/request';
 
+const campus1Building: string[] = ['Building A4', 'Building B4', 'Building C6'];
+const campus2Building: string[] = ['Building H1', 'Building H2', 'Building H6'];
+
 const ActivityLogs: FC = () => {
   const [localRequest] = useStorage<Request[]>('request', []);
+  const [requestList] = useState<Request[]>([...Requests, ...localRequest]);
+  const [nameFilter, setNameFilter] = useState<string>('');
+  const [dateFilter, setDateFilter] = useState<{ start: string; end: string }>({
+    start: '',
+    end: '',
+  });
+  const [campusFilter, setCampusFilter] = useState<string>('All');
+  const [buildingFilter, setBuildingFilter] = useState<string>('All');
 
   return (
     <Page title='Logs'>
@@ -20,9 +31,15 @@ const ActivityLogs: FC = () => {
               <h2 className='text-xl font-semibold text-gray-700'>Filter</h2>
               <button className='text-[12px]'>Clear all</button>
             </div>
-            <div className='mt-5 flex items-center space-x-2 rounded-[6px] border-[1px] border-[#E5E7EB] bg-white px-3'>
+            <div className='mt-5 flex items-center space-x-2 rounded-[6px] border-[1px] border-[#E5E7EB] bg-white pl-3'>
               <Icon.MagnifyingGlass className='h-4 w-4' />
-              <input type='text' placeholder='Search' className='py-[10px] text-[12px]' />
+              <input
+                value={nameFilter}
+                onChange={(e) => setNameFilter(e.target.value)}
+                type='text'
+                placeholder='Search'
+                className='w-full py-[10px] text-[12px]'
+              />
             </div>
             <div className='mt-4 flex flex-col space-y-[14px] 2xl:flex-row 2xl:space-x-1 2xl:space-y-0'>
               <div className='flex w-full flex-col space-y-[6px]'>
@@ -32,6 +49,8 @@ const ActivityLogs: FC = () => {
                 <input
                   type='date'
                   id='start-date'
+                  value={dateFilter.start}
+                  onChange={(e) => setDateFilter({ ...dateFilter, start: e.target.value })}
                   className='rounded-[6px] border-[1px] border-[#E5E7EB] p-2 text-[12px]'
                 />
               </div>
@@ -42,6 +61,8 @@ const ActivityLogs: FC = () => {
                 <input
                   type='date'
                   id='end-date'
+                  value={dateFilter.end}
+                  onChange={(e) => setDateFilter({ ...dateFilter, end: e.target.value })}
                   className='rounded-[6px] border-[1px] border-[#E5E7EB] p-2 text-[12px]'
                 />
               </div>
@@ -50,23 +71,42 @@ const ActivityLogs: FC = () => {
               <label htmlFor='campus' className='font-semibold text-gray-700'>
                 Campus
               </label>
-              <input
-                type='text'
+              <select
                 id='campus'
-                placeholder='Select input'
+                value={campusFilter}
+                onChange={(e) => setCampusFilter(e.target.value)}
                 className='rounded-[6px] border-[1px] border-[#E5E7EB] px-4 py-3'
-              />
+              >
+                <option value='All'>All</option>
+                <option value='Campus 1'>Campus 1</option>
+                <option value='Campus 2'>Campus 2</option>
+              </select>
             </div>
             <div className='mt-[14px] flex w-full flex-col space-y-[6px]'>
               <label htmlFor='building' className='font-semibold text-gray-700'>
                 Building
               </label>
-              <input
-                type='text'
+              <select
                 id='building'
-                placeholder='Select input'
+                value={buildingFilter}
+                onChange={(e) => setBuildingFilter(e.target.value)}
                 className='rounded-[6px] border-[1px] border-[#E5E7EB] px-4 py-3'
-              />
+              >
+                {campusFilter === 'Campus 1' ||
+                  (campusFilter === 'All' &&
+                    campus1Building.map((el) => (
+                      <option key={el} value={el}>
+                        {el}
+                      </option>
+                    )))}
+                {campusFilter === 'Campus 2' ||
+                  (campusFilter === 'All' &&
+                    campus2Building.map((el) => (
+                      <option key={el} value={el}>
+                        {el}
+                      </option>
+                    )))}
+              </select>
             </div>
             <div className='mt-[14px] flex w-full flex-col space-y-[6px]'>
               <label htmlFor='status' className='font-semibold text-gray-700'>
@@ -97,55 +137,12 @@ const ActivityLogs: FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {Requests.map((request, idx) => (
+                {requestList.map((request, idx) => (
                   <Tr key={idx} className='text-[12px] text-gray-500'>
                     <Td>
                       {request.date}
                       <br />
                       {request.time}
-                    </Td>
-                    <Td>
-                      {request.printer}
-                      <br />
-                      {request.campus}
-                    </Td>
-                    <Td>{request.copies}</Td>
-                    <Td>{request.document}</Td>
-                    <Td>
-                      Page range: {request.pageRange}
-                      <br />
-                      {request.orientation}
-                      <br />
-                      {request.paperSize}
-                      <br />
-                      {request.printSides}
-                      <br />
-                      {request.color}
-                    </Td>
-                    <Td>
-                      {request.deliverTime}
-                      <br />
-                      {request.deliverDate}
-                    </Td>
-                    <Td>
-                      <div
-                        className={`flex items-center justify-center rounded-[4px] ${
-                          request.status === 'Printing' && 'bg-[#88C56C]'
-                        } ${request.status === 'Waiting' && 'bg-[#F8B545]'} ${
-                          request.status === 'Ready' && 'bg-green-900'
-                        } px-3 py-2 text-white`}
-                      >
-                        {request.status}
-                      </div>
-                    </Td>
-                  </Tr>
-                ))}
-                {localRequest.map((request, idx) => (
-                  <Tr key={idx + Requests.length} className='text-[12px] text-gray-500'>
-                    <Td>
-                      {request.time}
-                      <br />
-                      {request.date}
                     </Td>
                     <Td>
                       {request.printer}

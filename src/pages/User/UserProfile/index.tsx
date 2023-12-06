@@ -2,22 +2,43 @@ import { FC, useState, useRef } from 'react';
 import { toast } from 'react-toastify';
 
 import { UserAccount } from '../../../data/account';
+import { useStorage } from '../../../hooks';
 import { Page } from '../../../layouts';
+
+interface PublicProfile {
+  firstName: string;
+  lastName: string;
+  studentId: string;
+  email: string;
+  phone: string;
+  city: string;
+  timeZone: string;
+  shortBio: string;
+}
 
 const UserProfile: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [user, setUser] = useStorage<PublicProfile>('user', {
+    firstName: UserAccount.firstName,
+    lastName: UserAccount.lastName,
+    studentId: UserAccount.studentId,
+    email: UserAccount.email,
+    phone: UserAccount.phone,
+    city: UserAccount.city,
+    timeZone: UserAccount.timeZone,
+    shortBio: UserAccount.shortBio,
+  });
+  const [localAvatar, setLocalAvatar] = useStorage<string>('avatar', '');
 
-  const [avatar, setAvatar] = useState<string>('');
-  const [firstName, setFirstName] = useState<string>(UserAccount.firstName);
-  const [lastName, setLastName] = useState<string>(UserAccount.lastName);
-  const [studentId, setStudentId] = useState<string>(UserAccount.studentId);
-  const [email, setEmail] = useState<string>(UserAccount.email);
-  const [tel, setTel] = useState<string>(UserAccount.phone);
-  const [city, setCity] = useState<string>(UserAccount.city);
-  const [timezone, setTimezone] = useState<string>(UserAccount.timeZone);
-  const [bio, setBio] = useState<string>(UserAccount.shortBio);
-
-  const [saved, setSaved] = useState<boolean>(false);
+  const [avatar, setAvatar] = useState<string>(localAvatar);
+  const [firstName, setFirstName] = useState<string>(user?.firstName);
+  const [lastName, setLastName] = useState<string>(user?.lastName);
+  const [studentId, setStudentId] = useState<string>(user?.studentId);
+  const [email, setEmail] = useState<string>(user?.email);
+  const [tel, setTel] = useState<string>(user?.phone);
+  const [city, setCity] = useState<string>(user?.city);
+  const [timezone, setTimezone] = useState<string>(user?.timeZone);
+  const [bio, setBio] = useState<string>(user?.shortBio);
 
   return (
     <Page title='Notifications'>
@@ -37,7 +58,7 @@ const UserProfile: FC = () => {
               )}
               <div className='ml-4 flex flex-col space-y-1'>
                 <h2 className='text-[32px] font-medium text-gray-700'>
-                  {saved ? firstName + ' ' + lastName : 'Khanh Nguyen'}
+                  {firstName + ' ' + lastName}
                 </h2>
                 <p>Student</p>
               </div>
@@ -176,7 +197,18 @@ const UserProfile: FC = () => {
             onClick={(e) => {
               e.preventDefault();
               toast.success('Updated successfully!');
-              setSaved(true);
+              const updatedInfo = {
+                firstName,
+                lastName,
+                studentId,
+                email,
+                phone: tel,
+                city,
+                timeZone: timezone,
+                shortBio: bio,
+              };
+              setUser(updatedInfo);
+              setLocalAvatar(avatar);
             }}
             className='mt-9 self-end rounded-lg bg-green-900 px-10 py-4 font-semibold text-white'
           >
