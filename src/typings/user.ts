@@ -12,3 +12,11 @@ export interface User {
   avatar: string;
   isManager: boolean;
 }
+
+export interface UsersList {
+  userName: string;
+  fullName: string;
+  pages: number;
+  jobPending: number;
+  status: string;
+}

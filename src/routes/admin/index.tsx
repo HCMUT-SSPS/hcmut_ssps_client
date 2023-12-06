@@ -5,6 +5,7 @@ import { Icon, Sidebar } from '../../components';
 
 const AdminProfilePage = lazy(() => import('../../pages/Admin/UserProfile/AdminProfile'));
 const UserProfilePage = lazy(() => import('../../pages/Admin/UserProfile/UserProfile'));
+const UserListPage = lazy(() => import('../../pages/Admin/UserList'));
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
 const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
 const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
@@ -28,6 +29,12 @@ const AdminRoutes: FC = () => {
             path: '/admin/printers',
             Icon: Icon.Printer.Outlined,
             IconFill: Icon.Printer.Filled,
+          },
+          {
+            name: 'Users',
+            path: '/admin/users',
+            Icon: Icon.User.Outlined,
+            IconFill: Icon.User.Filled,
           },
           {
             name: 'Reports',
@@ -100,7 +107,15 @@ const AdminRoutes: FC = () => {
           }
         />
         <Route
-          path='/users/admin-profile'
+          path='/users'
+          element={
+            <Suspense fallback={null}>
+              <UserListPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/users/admin/*'
           element={
             <Suspense fallback={null}>
               <AdminProfilePage />
@@ -108,7 +123,7 @@ const AdminRoutes: FC = () => {
           }
         />
         <Route
-          path='/users/user-profile'
+          path='/users/user/*'
           element={
             <Suspense fallback={null}>
               <UserProfilePage />
