@@ -18,7 +18,7 @@ interface PublicProfile {
 
 const UserProfile: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [user, setUser] = useStorage<PublicProfile>('user', {
+  const [user, setUser] = useStorage<PublicProfile>('userProfile', {
     firstName: UserAccount.firstName,
     lastName: UserAccount.lastName,
     studentId: UserAccount.studentId,
@@ -28,9 +28,8 @@ const UserProfile: FC = () => {
     timeZone: UserAccount.timeZone,
     shortBio: UserAccount.shortBio,
   });
-  const [localAvatar, setLocalAvatar] = useStorage<string>('avatar', '');
 
-  const [avatar, setAvatar] = useState<string>(localAvatar);
+  const [avatar, setAvatar] = useState<string>(UserAccount.avatar);
   const [firstName, setFirstName] = useState<string>(user?.firstName);
   const [lastName, setLastName] = useState<string>(user?.lastName);
   const [studentId, setStudentId] = useState<string>(user?.studentId);
@@ -208,7 +207,6 @@ const UserProfile: FC = () => {
                 shortBio: bio,
               };
               setUser(updatedInfo);
-              setLocalAvatar(avatar);
             }}
             className='mt-9 self-end rounded-lg bg-green-900 px-10 py-4 font-semibold text-white'
           >
