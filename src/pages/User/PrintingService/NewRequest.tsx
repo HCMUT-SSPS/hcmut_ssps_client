@@ -6,6 +6,8 @@ import TreeBackground from '../../../assets/images/TreeBackground.png';
 import { Icon } from '../../../components';
 import BrowseFile from '../../../components/Modal/BrowseFile';
 import { Requests } from '../../../data/request';
+import { useStorage } from '../../../hooks';
+import { Request } from '../../../typings/request';
 
 interface NewRequestProps {
   setFile: (uploadFile: File[]) => void;
@@ -14,6 +16,7 @@ interface NewRequestProps {
 
 const NewRequest: FC<NewRequestProps> = ({ setFile, setCurrentStep }) => {
   const [show, setShow] = useState(false);
+  const [localRequest] = useStorage<Request[]>('request', []);
 
   const closeModal = () => {
     setShow(false);
@@ -75,6 +78,49 @@ const NewRequest: FC<NewRequestProps> = ({ setFile, setCurrentStep }) => {
                     {request.date}
                     <br />
                     {request.time}
+                  </Td>
+                  <Td>
+                    {request.printer}
+                    <br />
+                    {request.campus}
+                  </Td>
+                  <Td>{request.copies}</Td>
+                  <Td>{request.document}</Td>
+                  <Td>
+                    Page range: {request.pageRange}
+                    <br />
+                    {request.orientation}
+                    <br />
+                    {request.paperSize}
+                    <br />
+                    {request.printSides}
+                    <br />
+                    {request.color}
+                  </Td>
+                  <Td>
+                    {request.deliverTime}
+                    <br />
+                    {request.deliverDate}
+                  </Td>
+                  <Td>
+                    <div
+                      className={`flex items-center justify-center rounded-[4px] ${
+                        request.status === 'Printing' && 'bg-[#88C56C]'
+                      } ${request.status === 'Waiting' && 'bg-[#F8B545]'} ${
+                        request.status === 'Ready' && 'bg-green-900'
+                      } px-3 py-2 text-white`}
+                    >
+                      {request.status}
+                    </div>
+                  </Td>
+                </Tr>
+              ))}
+              {localRequest.map((request, idx) => (
+                <Tr key={idx + Requests.length} className='text-[12px] text-gray-500'>
+                  <Td>
+                    {request.time}
+                    <br />
+                    {request.date}
                   </Td>
                   <Td>
                     {request.printer}

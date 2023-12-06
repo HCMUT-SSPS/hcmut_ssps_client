@@ -2,9 +2,14 @@ import { FC } from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 
 import { Icon } from '../../../components';
+import { Requests } from '../../../data/request';
+import { useStorage } from '../../../hooks';
 import { Page } from '../../../layouts';
+import { Request } from '../../../typings/request';
 
 const ActivityLogs: FC = () => {
+  const [localRequest] = useStorage<Request[]>('request', []);
+
   return (
     <Page title='Logs'>
       <div className='p-10'>
@@ -92,106 +97,92 @@ const ActivityLogs: FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr className='text-[12px] text-gray-500'>
-                  <Td>
-                    Oct 24, 2023
-                    <br />
-                    7:35:16 PM
-                  </Td>
-                  <Td>
-                    Room 602, A4
-                    <br />
-                    D10 Campus
-                  </Td>
-                  <Td>25</Td>
-                  <Td>Computer Network Documents Slides...</Td>
-                  <Td>A4 (ISO_A4) Duplex: No...</Td>
-                  <Td>
-                    8:00 PM
-                    <br />
-                    Dec 23, 2023
-                  </Td>
-                  <Td>
-                    <div className='flex items-center justify-center rounded-[4px] bg-green-900 px-3 py-2 text-white'>
-                      Ready
-                    </div>
-                  </Td>
-                </Tr>
-                <Tr className='text-[12px] text-gray-500'>
-                  <Td>
-                    Oct 24, 2023
-                    <br />
-                    7:35:16 PM
-                  </Td>
-                  <Td>
-                    Room 602, A4
-                    <br />
-                    D10 Campus
-                  </Td>
-                  <Td>25</Td>
-                  <Td>Computer Network Documents Slides In Class Lorem Ipsum Lorem Ipsum.pdf</Td>
-                  <Td>A4 (ISO_A4) Duplex: No Grayscale: No 834 kB client-workstation PostScript</Td>
-                  <Td>
-                    8:00 PM
-                    <br />
-                    Dec 23, 2023
-                  </Td>
-                  <Td>
-                    <div className='flex items-center justify-center rounded-[4px] bg-[#F8B545] px-3 py-2 text-white'>
-                      Waiting
-                    </div>
-                  </Td>
-                </Tr>
-                <Tr className='text-[12px] text-gray-500'>
-                  <Td>
-                    Oct 24, 2023
-                    <br />
-                    7:35:16 PM
-                  </Td>
-                  <Td>
-                    Room 602, A4
-                    <br />
-                    D10 Campus
-                  </Td>
-                  <Td>25</Td>
-                  <Td>Computer Network Documents Slides...</Td>
-                  <Td>A4 (ISO_A4) Duplex: No...</Td>
-                  <Td>
-                    8:00 PM
-                    <br />
-                    Dec 23, 2023
-                  </Td>
-                  <Td>
-                    <div className='flex items-center justify-center rounded-[4px] bg-[#88C56C] px-3 py-2 text-white'>
-                      Printing
-                    </div>
-                  </Td>
-                </Tr>
-                <Tr className='text-[12px] text-gray-500'>
-                  <Td>
-                    Oct 24, 2023
-                    <br />
-                    7:35:16 PM
-                  </Td>
-                  <Td>
-                    Room 602, A4
-                    <br />
-                    D10 Campus
-                  </Td>
-                  <Td>25</Td>
-                  <Td>Computer Network Documents Slides In Class Lorem Ipsum Lorem Ipsum.pdf</Td>
-                  <Td>A4 (ISO_A4) Duplex: No Grayscale: No 834 kB client-workstation PostScript</Td>
-                  <Td>
-                    8:00 PM
-                    <br />
-                    Dec 23, 2023
-                  </Td>
-                  <Td>
-                    <div className='flex items-center justify-center rounded-[4px] bg-[#F8B545] px-3 py-2 text-white'>
-                      Waiting
-                    </div>
-                  </Td>
-                </Tr>
+                {Requests.map((request, idx) => (
+                  <Tr key={idx} className='text-[12px] text-gray-500'>
+                    <Td>
+                      {request.date}
+                      <br />
+                      {request.time}
+                    </Td>
+                    <Td>
+                      {request.printer}
+                      <br />
+                      {request.campus}
+                    </Td>
+                    <Td>{request.copies}</Td>
+                    <Td>{request.document}</Td>
+                    <Td>
+                      Page range: {request.pageRange}
+                      <br />
+                      {request.orientation}
+                      <br />
+                      {request.paperSize}
+                      <br />
+                      {request.printSides}
+                      <br />
+                      {request.color}
+                    </Td>
+                    <Td>
+                      {request.deliverTime}
+                      <br />
+                      {request.deliverDate}
+                    </Td>
+                    <Td>
+                      <div
+                        className={`flex items-center justify-center rounded-[4px] ${
+                          request.status === 'Printing' && 'bg-[#88C56C]'
+                        } ${request.status === 'Waiting' && 'bg-[#F8B545]'} ${
+                          request.status === 'Ready' && 'bg-green-900'
+                        } px-3 py-2 text-white`}
+                      >
+                        {request.status}
+                      </div>
+                    </Td>
+                  </Tr>
+                ))}
+                {localRequest.map((request, idx) => (
+                  <Tr key={idx + Requests.length} className='text-[12px] text-gray-500'>
+                    <Td>
+                      {request.time}
+                      <br />
+                      {request.date}
+                    </Td>
+                    <Td>
+                      {request.printer}
+                      <br />
+                      {request.campus}
+                    </Td>
+                    <Td>{request.copies}</Td>
+                    <Td>{request.document}</Td>
+                    <Td>
+                      Page range: {request.pageRange}
+                      <br />
+                      {request.orientation}
+                      <br />
+                      {request.paperSize}
+                      <br />
+                      {request.printSides}
+                      <br />
+                      {request.color}
+                    </Td>
+                    <Td>
+                      {request.deliverTime}
+                      <br />
+                      {request.deliverDate}
+                    </Td>
+                    <Td>
+                      <div
+                        className={`flex items-center justify-center rounded-[4px] ${
+                          request.status === 'Printing' && 'bg-[#88C56C]'
+                        } ${request.status === 'Waiting' && 'bg-[#F8B545]'} ${
+                          request.status === 'Ready' && 'bg-green-900'
+                        } px-3 py-2 text-white`}
+                      >
+                        {request.status}
+                      </div>
+                    </Td>
+                  </Tr>
+                ))}
               </Tbody>
             </Table>
           </section>

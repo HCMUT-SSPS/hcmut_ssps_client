@@ -3,7 +3,9 @@ import { Table, Thead, Tr, Th, Tbody, Td } from 'react-super-responsive-table';
 import { toast } from 'react-toastify';
 
 import { Icon } from '../../../components';
+import { useStorage } from '../../../hooks';
 import useBoundStore from '../../../store';
+import { Request } from '../../../typings/request';
 
 import StepIndicator from './StepIndicator';
 
@@ -14,11 +16,31 @@ interface FinalReviewProps {
 const FinalReview: FC<FinalReviewProps> = ({ setCurrentStep }) => {
   const requestInfo = useBoundStore.use.requestInfo();
   const resetRequest = useBoundStore.use.resetRequest();
+  const paperBalance = 349;
+  const [request, setRequest] = useStorage<Request[]>('request', []);
+  const getCurrentDateTime = () => {
+    const currentDate = new Date();
+
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+    const day = currentDate.getDate().toString().padStart(2, '0');
+
+    const hours = currentDate.getHours().toString().padStart(2, '0');
+    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+
+    const dateString = `${year}-${month}-${day}`;
+    const timeString = `${hours}:${minutes}`;
+
+    return { date: dateString, time: timeString };
+  };
 
   const sendRequest = () => {
     resetRequest();
     setCurrentStep(0);
     toast.success('Your request has been sent');
+    const curTime = getCurrentDateTime();
+    const newRequestInfo = { ...requestInfo, ...curTime };
+    setRequest([...request, newRequestInfo]);
   };
 
   return (
@@ -79,7 +101,7 @@ const FinalReview: FC<FinalReviewProps> = ({ setCurrentStep }) => {
               <Icon.File className='h-6 w-6' />
             </div>
             <div>
-              <p className='text-[18px] font-semibold text-green-900'>349</p>
+              <p className='text-[18px] font-semibold text-green-900'>{paperBalance}</p>
               <p className='text-[12px]'>Paper sheets left</p>
             </div>
           </div>
@@ -97,12 +119,14 @@ const FinalReview: FC<FinalReviewProps> = ({ setCurrentStep }) => {
           </div>
         </section>
       </div>
-      <div className='mt-4 flex space-x-4 bg-red-50 p-4'>
-        <Icon.WarningCircle />
-        <p className='text-[18px] font-semibold text-red-800'>
-          Out of Paper Sheet, please buy more paper.
-        </p>
-      </div>
+      {paperBalance <= 0 && (
+        <div className='mt-4 flex space-x-4 bg-red-50 p-4'>
+          <Icon.WarningCircle />
+          <p className='text-[18px] font-semibold text-red-800'>
+            Out of Paper Sheet, please buy more paper.
+          </p>
+        </div>
+      )}
       <div className='mt-[160px] flex space-x-3 self-end pb-10'>
         <button
           onClick={() => setCurrentStep(2)}
