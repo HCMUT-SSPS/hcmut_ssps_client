@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Icon } from '..';
 
@@ -20,7 +21,9 @@ const Navbar: FC = () => {
         >
           Back To MyBK
         </a>
-        <button className='rounded-lg bg-green-900 px-6 py-2 text-white'>Print Docs</button>
+        <Link to='/login' className='rounded-lg bg-green-900 px-6 py-2 text-white'>
+          Print Docs
+        </Link>
       </div>
     </div>
   );

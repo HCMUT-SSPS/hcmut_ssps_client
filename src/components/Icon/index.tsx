@@ -34,6 +34,7 @@ import Thermometer from '../../assets/svgs/icons/Thermometer.svg?react';
 import User from '../../assets/svgs/icons/User.svg?react';
 import UserFill from '../../assets/svgs/icons/UserFill.svg?react';
 import Wallet from '../../assets/svgs/icons/Wallet.svg?react';
+import WarningCircle from '../../assets/svgs/icons/WarningCircle.svg?react';
 import ZoomInIcon from '../../assets/svgs/icons/ZoomInIcon.svg?react';
 import ZoomOutIcon from '../../assets/svgs/icons/ZoomOutIcon.svg?react';
 import Logo from '../../assets/svgs/Logo.svg?react';
@@ -88,6 +89,7 @@ export default {
   SignOut,
   Thermometer,
   Wallet,
+  WarningCircle,
   ZoomInIcon,
   ZoomOutIcon,
   User: {

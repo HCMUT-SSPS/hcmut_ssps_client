@@ -1,71 +1,34 @@
-import { FC, useState, useRef } from 'react';
-import { toast } from 'react-toastify';
+import { FC } from 'react';
 
-import { UserAccount } from '../../../data/account';
+import HeaderBackground from '../../../assets/images/HeaderBackground.png';
+import { AdminAccount } from '../../../data/account';
 import { Page } from '../../../layouts';
 
-const UserProfile: FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const [avatar, setAvatar] = useState<string>('');
-  const [firstName, setFirstName] = useState<string>(UserAccount.firstName);
-  const [lastName, setLastName] = useState<string>(UserAccount.lastName);
-  const [studentId, setStudentId] = useState<string>(UserAccount.studentId);
-  const [email, setEmail] = useState<string>(UserAccount.email);
-  const [tel, setTel] = useState<string>(UserAccount.phone);
-  const [city, setCity] = useState<string>(UserAccount.city);
-  const [timezone, setTimezone] = useState<string>(UserAccount.timeZone);
-  const [bio, setBio] = useState<string>(UserAccount.shortBio);
-
-  const [saved, setSaved] = useState<boolean>(false);
-
+const AdminProfile: FC = () => {
   return (
     <Page title='Notifications'>
-      <div className='w-full p-10'>
-        <h1 className='text-2xl font-semibold text-green-900'>User Profile</h1>
-        <form className='mt-6 flex flex-col'>
+      <div className='w-full pb-10'>
+        <nav className='relative w-full bg-green-900'>
+          <h1 className='select-none px-10 py-5 text-2xl/normal font-semibold text-white'>
+            Users {'>'} Admin Profile
+          </h1>
+          <img className='absolute right-0 top-0 h-full w-auto' src={HeaderBackground} />
+        </nav>
+        <form className='mt-6 flex flex-col px-10'>
           <div className='flex w-full flex-col justify-between space-y-4 lg:flex-row lg:items-center lg:space-y-0'>
             <div className='flex items-center'>
-              {avatar ? (
-                <img src={avatar} alt='User avatar' className='h-[128px] w-[128xp] rounded-lg' />
-              ) : (
-                <img
-                  src={UserAccount.avatar}
-                  alt='User avatar'
-                  className='h-[128px] w-[128xp] rounded-lg'
-                />
-              )}
+              <img
+                src={AdminAccount.avatar}
+                alt='User avatar'
+                className='h-[128px] w-[128xp] rounded-lg'
+              />
               <div className='ml-4 flex flex-col space-y-1'>
                 <h2 className='text-[32px] font-medium text-gray-700'>
-                  {saved ? firstName + ' ' + lastName : 'Khanh Nguyen'}
+                  {AdminAccount.firstName + ' ' + AdminAccount.lastName}
                 </h2>
                 <p>Student</p>
               </div>
             </div>
-            <form className='flex space-x-3 justify-self-end'>
-              <input
-                className='hidden'
-                ref={inputRef}
-                type='file'
-                accept='image/*'
-                onChange={(e) => setAvatar(URL.createObjectURL(e.target.files![0]))}
-              />
-              <button
-                onClick={() => setAvatar('')}
-                className='rounded-lg border-[1px] border-green-900 px-6 py-2 font-semibold text-green-900'
-              >
-                Remove
-              </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  inputRef.current?.click();
-                }}
-                className='rounded-lg bg-green-900 px-6 py-2 text-white'
-              >
-                Change Avatar
-              </button>
-            </form>
           </div>
           <div className='mt-10'>
             <h2 className='text-xl font-semibold text-gray-700'>User Details</h2>
@@ -77,9 +40,9 @@ const UserProfile: FC = () => {
                 <input
                   type='text'
                   id='first-name'
-                  onChange={(e) => setFirstName(e.target.value)}
+                  disabled
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={firstName}
+                  value={AdminAccount.firstName}
                 />
               </div>
               <div className='flex w-full flex-col space-y-[10px]'>
@@ -89,9 +52,9 @@ const UserProfile: FC = () => {
                 <input
                   type='text'
                   id='last-name'
-                  onChange={(e) => setLastName(e.target.value)}
+                  disabled
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={lastName}
+                  value={AdminAccount.lastName}
                 />
               </div>
               <div className='flex w-full flex-col space-y-[10px]'>
@@ -101,10 +64,25 @@ const UserProfile: FC = () => {
                 <input
                   type='number'
                   id='student-id'
-                  onChange={(e) => setStudentId(e.target.value)}
+                  disabled
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={studentId}
+                  value={AdminAccount.studentId}
                 />
+              </div>
+              <div className='flex w-full flex-col space-y-[10px]'>
+                <label htmlFor='timezone' className='text-[14px] font-semibold text-gray-800'>
+                  Role
+                </label>
+                <select
+                  id='timezone'
+                  className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
+                  value='Moderator'
+                  disabled
+                >
+                  <option value='Moderator'>Moderator</option>
+                  <option value='Manager'>Manager</option>
+                  <option value='Administrator'>Administrator</option>
+                </select>
               </div>
             </div>
             <div className='mt-7 grid grid-cols-2 gap-6'>
@@ -115,9 +93,9 @@ const UserProfile: FC = () => {
                 <input
                   type='email'
                   id='email'
-                  onChange={(e) => setEmail(e.target.value)}
+                  disabled
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={email}
+                  value={AdminAccount.email}
                 />
               </div>
               <div className='flex w-full flex-col space-y-[10px]'>
@@ -127,9 +105,9 @@ const UserProfile: FC = () => {
                 <input
                   type='number'
                   id='tel'
-                  onChange={(e) => setTel(e.target.value)}
+                  disabled
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={tel}
+                  value={AdminAccount.phone}
                 />
               </div>
               <div className='flex w-full flex-col space-y-[10px]'>
@@ -139,9 +117,9 @@ const UserProfile: FC = () => {
                 <input
                   type='text'
                   id='city'
-                  onChange={(e) => setCity(e.target.value)}
+                  disabled
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={city}
+                  value={AdminAccount.city}
                 />
               </div>
               <div className='flex w-full flex-col space-y-[10px]'>
@@ -151,8 +129,8 @@ const UserProfile: FC = () => {
                 <select
                   id='timezone'
                   className='rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
-                  value={timezone}
-                  onChange={(e) => setTimezone(e.target.value)}
+                  value={AdminAccount.timeZone}
+                  disabled
                 >
                   <option value='GMT+7 - Viet Nam'>GMT+7 - Viet Nam</option>
                   <option value='GMT+8 - China'>GMT+8 - China</option>
@@ -165,27 +143,17 @@ const UserProfile: FC = () => {
                 </label>
                 <textarea
                   id='bio'
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
+                  value={AdminAccount.shortBio}
+                  disabled
                   className='h-[120px] rounded-[6px] border-[1px] border-gray-500 px-4 py-3 text-[15px]'
                 />
               </div>
             </div>
           </div>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              toast.success('Updated successfully!');
-              setSaved(true);
-            }}
-            className='mt-9 self-end rounded-lg bg-green-900 px-10 py-4 font-semibold text-white'
-          >
-            Save Changes
-          </button>
         </form>
       </div>
     </Page>
   );
 };
 
-export default UserProfile;
+export default AdminProfile;

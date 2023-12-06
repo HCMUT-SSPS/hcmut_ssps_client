@@ -3,6 +3,8 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 
+const AdminProfilePage = lazy(() => import('../../pages/Admin/UserProfile/AdminProfile'));
+const UserProfilePage = lazy(() => import('../../pages/Admin/UserProfile/UserProfile'));
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
 const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
 const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
@@ -94,6 +96,22 @@ const AdminRoutes: FC = () => {
           element={
             <Suspense fallback={null}>
               <SettingsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/users/admin-profile'
+          element={
+            <Suspense fallback={null}>
+              <AdminProfilePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/users/user-profile'
+          element={
+            <Suspense fallback={null}>
+              <UserProfilePage />
             </Suspense>
           }
         />

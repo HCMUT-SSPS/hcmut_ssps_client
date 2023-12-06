@@ -97,6 +97,12 @@ const FinalReview: FC<FinalReviewProps> = ({ setCurrentStep }) => {
           </div>
         </section>
       </div>
+      <div className='mt-4 flex space-x-4 bg-red-50 p-4'>
+        <Icon.WarningCircle />
+        <p className='text-[18px] font-semibold text-red-800'>
+          Out of Paper Sheet, please buy more paper.
+        </p>
+      </div>
       <div className='mt-[160px] flex space-x-3 self-end pb-10'>
         <button
           onClick={() => setCurrentStep(2)}

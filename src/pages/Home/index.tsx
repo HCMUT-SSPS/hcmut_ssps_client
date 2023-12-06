@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import HomepageImg from '../../assets/images/HomepageImg.png';
 import { Icon } from '../../components';
@@ -23,10 +24,10 @@ const Home: FC = () => {
           <p className='xl:text-lg 2xl:text-2xl'>
             Prepare your lessons thoroughly and effortlessly with our printing service
           </p>
-          <button className='flex w-fit space-x-2 rounded-lg bg-green-900 px-10 py-4'>
+          <Link to='/login' className='flex w-fit space-x-2 rounded-lg bg-green-900 px-10 py-4'>
             <p className='text-white'>Print Now!</p>
             <Icon.ArrowRight className='w-6' />
-          </button>
+          </Link>
         </div>
         <div className='flex w-[50%] justify-end'>
           <img src={HomepageImg} alt='Homepage image' />
