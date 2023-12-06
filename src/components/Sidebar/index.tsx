@@ -130,7 +130,9 @@ const CustomSidebar: FC<SidebarProps> = ({ items }) => {
             className='aspect-square w-16 rounded-lg'
           />
           <div className='space-y-1'>
-            <p className='text-base/normal font-medium text-gray-700'>{user.name}</p>
+            <p className='text-base/normal font-medium text-gray-700'>
+              {user.firstName} {user.lastName}
+            </p>
             <p className='text-sm/normal font-normal'>{user.isManager ? 'Admin' : 'Student'}</p>
           </div>
         </Link>

@@ -3,6 +3,9 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
 
+const AdminProfilePage = lazy(() => import('../../pages/Admin/UserProfile/AdminProfile'));
+const UserProfilePage = lazy(() => import('../../pages/Admin/UserProfile/UserProfile'));
+const UserListPage = lazy(() => import('../../pages/Admin/UserList'));
 const DashboardPage = lazy(() => import('../../pages/Admin/Dashboard'));
 const PrintersListPage = lazy(() => import('../../pages/Admin/Printers/List'));
 const AddPrinterPage = lazy(() => import('../../pages/Admin/Printers/Add'));
@@ -26,6 +29,12 @@ const AdminRoutes: FC = () => {
             path: '/admin/printers',
             Icon: Icon.Printer.Outlined,
             IconFill: Icon.Printer.Filled,
+          },
+          {
+            name: 'Users',
+            path: '/admin/users',
+            Icon: Icon.User.Outlined,
+            IconFill: Icon.User.Filled,
           },
           {
             name: 'Reports',
@@ -94,6 +103,30 @@ const AdminRoutes: FC = () => {
           element={
             <Suspense fallback={null}>
               <SettingsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/users'
+          element={
+            <Suspense fallback={null}>
+              <UserListPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/users/admin/*'
+          element={
+            <Suspense fallback={null}>
+              <AdminProfilePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/users/user/*'
+          element={
+            <Suspense fallback={null}>
+              <UserProfilePage />
             </Suspense>
           }
         />

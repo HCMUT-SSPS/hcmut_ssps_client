@@ -1,7 +1,12 @@
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Icon, Sidebar } from '../../components';
+import ActivityLogs from '../../pages/User/ActivityLogs';
+import UserDashboard from '../../pages/User/Dashboard';
+import Notifications from '../../pages/User/Notifications';
+import PrintingService from '../../pages/User/PrintingService';
+import UserProfile from '../../pages/User/UserProfile';
 
 const UserRoutes: FC = () => {
   return (
@@ -32,16 +37,50 @@ const UserRoutes: FC = () => {
             Icon: Icon.Bell.Outlined,
             IconFill: Icon.Bell.Filled,
           },
-          {
-            name: 'Settings',
-            path: '/settings',
-            Icon: Icon.Gear.Outlined,
-            IconFill: Icon.Gear.Filled,
-          },
         ]}
       />
       <Routes>
         <Route path='*' element={<div>Not found</div>} />
+        <Route
+          path='/dashboard'
+          element={
+            <Suspense fallback={null}>
+              <UserDashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/printing'
+          element={
+            <Suspense fallback={null}>
+              <PrintingService />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/notifications'
+          element={
+            <Suspense fallback={null}>
+              <Notifications />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            <Suspense fallback={null}>
+              <UserProfile />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/logs'
+          element={
+            <Suspense fallback={null}>
+              <ActivityLogs />
+            </Suspense>
+          }
+        />
       </Routes>
     </>
   );
